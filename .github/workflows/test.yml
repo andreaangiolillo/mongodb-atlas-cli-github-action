@@ -6,11 +6,11 @@ on:
       - master
   pull_request:
 jobs:
-  hello_world_job:
+  ubuntu-latest:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: AtlasCLI
     steps:
-      - id: foo
+      - name: AtlasCLI
         uses: andreaangiolillo/atlasCLI-github-action@v0.0.4
         with:
           who-to-greet: 'Mona the Octocat'
