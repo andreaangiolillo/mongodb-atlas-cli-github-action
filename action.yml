@@ -1,14 +1,10 @@
 ame: 'AtlasCLI GitHub Action'
 description: 'Use AtlasCLI in your GitHub workflow'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+  version:
+    description: 'AtlasCLI version to use'
+    required: false
+    default: 'v1.5.1'
 runs:
   using: "composite"
   steps:
@@ -19,7 +15,7 @@ runs:
       uses: actions/checkout@v3
       with: 
         repository: mongodb/mongodb-atlas-cli
-        ref: atlascli/v1.5.1
+        ref: atlascli/${{ inputs.version }}
 
     - name: Build AtlasCLI
       shell: bash

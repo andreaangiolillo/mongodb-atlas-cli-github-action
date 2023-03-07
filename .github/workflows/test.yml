@@ -12,5 +12,3 @@ jobs:
     steps:
       - name: AtlasCLI
         uses: andreaangiolillo/atlasCLI-github-action@v0.0.4
-        with:
-          who-to-greet: 'Mona the Octocat'
