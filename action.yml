@@ -42,8 +42,14 @@ runs:
     - name: Configure AtlasCLI
       shell: bash
       run: |
-        atlas config set org_id ${{ inputs.org-id }}
-        atlas config set project_id ${{ inputs.project-id }}
+        if [ -n "${{ inputs.org-id }}" ]; then
+         atlas config set org_id ${{ inputs.org-id }}
+        fi
+        
+        if [ -n "${{ inputs.project-id }}" ]; then
+         atlas config set project_id ${{ inputs.project-id }}
+        fi
+
         atlas config set public_api_key ${{ inputs.public-key }}
         atlas config set private_api_key ${{ inputs.private-key }}
         atlas config set service "cloud"
