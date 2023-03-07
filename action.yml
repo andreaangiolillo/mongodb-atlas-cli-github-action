@@ -28,7 +28,8 @@ runs:
     - name: Add AtlasCLI to $PATH
       shell: bash
       run: |
-        chmod +x /bin/atlas
+        chmod +x bin/atlas
+        echo "$GITHUB_WORKSPACE/bin/atlas"
         echo "$GITHUB_WORKSPACE/bin/atlas" >> $GITHUB_PATH
 
     - name: Run AtlasCLI
