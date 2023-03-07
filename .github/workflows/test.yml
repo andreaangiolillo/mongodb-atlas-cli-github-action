@@ -7,7 +7,7 @@ on:
   pull_request:
 jobs:
   ubuntu-latest:
-    name: Testing AtlasCLI action without providing version
+    name: Testing AtlasCLI action
     runs-on: ubuntu-latest
     steps:
       - name: AtlasCLI
