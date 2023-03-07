@@ -30,6 +30,7 @@ runs:
       run: |
         chmod +x bin/atlas
         echo "$GITHUB_WORKSPACE/bin/atlas"
+        echo "$GITHUB_PATH"
         echo "$GITHUB_WORKSPACE/bin/atlas" >> $GITHUB_PATH
 
     - name: Run AtlasCLI
