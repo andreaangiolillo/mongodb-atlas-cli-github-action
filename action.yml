@@ -12,12 +12,25 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
+    - name: Install Go
+      uses: actions/setup-go@v3
+
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with: 
+        repository: mongodb/mongodb-atlas-cli
+        ref: atlascli/v1.5.1
+
+    - name: Build AtlasCLI
       shell: bash
-    - id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+      run: make build-atlascli
+
+    - name: Add AtlasCLI to $PATH
       shell: bash
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      run: |
+        chmod +x /bin/atlas
+        echo "$GITHUB_WORKSPACE/bin/atlas" >> $GITHUB_PATH
+
+    - name: Run AtlasCLI
       shell: bash
-    - run: scripts/main.sh
-      shell: bash
+      run: atlas --help
