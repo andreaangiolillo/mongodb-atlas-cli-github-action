@@ -16,7 +16,7 @@ jobs:
     environment: TEST_ENV
     steps:
       - name: AtlasCLI
-        uses: andreaangiolillo/atlasCLI-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@main
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -33,7 +33,7 @@ jobs:
     environment: TEST_ENV
     steps:
       - name: AtlasCLI
-        uses: andreaangiolillo/atlasCLI-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@main
         with:
          version: v1.5.0
          public-key: ${{ secrets.PUBLIC_KEY }}
