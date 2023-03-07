@@ -31,8 +31,11 @@ runs:
         chmod +x bin/atlas
         echo "$GITHUB_WORKSPACE/bin/atlas"
         echo "$GITHUB_PATH"
-        echo "$GITHUB_WORKSPACE/bin/atlas" >> $GITHUB_PATH
+        cat "$GITHUB_PATH"
+        
+        echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
 
+        cat "$GITHUB_PATH"
     - name: Run AtlasCLI
       shell: bash
       run: atlas --help
