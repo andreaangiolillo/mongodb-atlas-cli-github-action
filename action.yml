@@ -11,10 +11,10 @@ inputs:
   private-key:
       description: 'MongoDB Atlas PrivateKey'
       required: true
-  orgId:
+  org-id:
       description: 'MongoDB Atlas Organization ID'
       required: false
-  projectId:
+  project-id:
       description: 'MongoDB Atlas Project ID'
       required: false
 runs:
@@ -42,8 +42,8 @@ runs:
     - name: Configure AtlasCLI
       shell: bash
       run: |
-        atlas config set org_id ${{ inputs.orgId }}
-        atlas config set project_id ${{ inputs.projectId }}
-        atlas config set public_api_key ${{ inputs.public_api_key }}
-        atlas config set private_api_key ${{ inputs.private_api_key }}
+        atlas config set org_id ${{ inputs.org-id }}
+        atlas config set project_id ${{ inputs.project-id }}
+        atlas config set public_api_key ${{ inputs.public-key }}
+        atlas config set private_api_key ${{ inputs.private-key }}
         atlas config set service "cloud"
