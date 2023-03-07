@@ -1,4 +1,4 @@
-ame: 'AtlasCLI GitHub Action'
+name: 'AtlasCLI GitHub Action'
 description: 'Use AtlasCLI in your GitHub workflow'
 inputs:
   version:
