@@ -15,6 +15,9 @@ jobs:
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
+      - name: Use AtlasCLI
+        shell: bash
+        run: atlas --help
   with-version:
     name: Testing AtlasCLI action
     runs-on: ubuntu-latest
@@ -27,3 +30,6 @@ jobs:
          private-key: ${{ secrets.PRIVATE_KEY }}
          orgId: 62669e5cf881800090327a03
          projectId: 63f8c04f967d7649b6e1109e
+      - name: Use AtlasCLI
+        shell: bash
+        run: atlas --help
