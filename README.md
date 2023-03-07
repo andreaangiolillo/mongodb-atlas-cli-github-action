@@ -14,6 +14,8 @@ The action executes the Atlas CLI Bash script on a user defined version. If the 
 
 
 ## Usage
+
+### Basic
 ```yaml
 # File: .github/workflows/workflow.yml
 
@@ -31,7 +33,33 @@ jobs:
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
+         
+      - name: Use AtlasCLI
+        shell: bash
+        run: atlas --version # Print Atlas CLI Version
+
+```
+### Provide optional configurations
+```yaml
+# File: .github/workflows/workflow.yml
+
+on: [push]
+
+name: Atlas CLI Action Sample
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Configure Atlas CLI
+        uses: andreaangiolillo/atlas-cli-github-action@latest
+        with:
+         version: v1.5.0 # optional
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: 62669e5cf881800090327a03 # optional
+         project-id: 63f8c04f967d7649b6e1109e # optional
          
       - name: Use AtlasCLI
         shell: bash
@@ -39,15 +67,16 @@ jobs:
 
 ```
 
+Other examples available in [workflow/test.yml](.github/workflows/test.yml). 
 ## Configuration options
 
-| Option       | Usage                                                                                             | Default value |
-|--------------|---------------------------------------------------------------------------------------------------|--------------|
-| `version`    | Define the Atlas CLI version to use in the workflow. <span style="color:green;">Optional</span>   |`v1.5.1`      |
-| `public-key` | The MongoDB Atlas Public Key. <span style="color:red;">Required</span>                            | none         |
-| `private-key`| The MongoDB Atlas Private Key. <span style="color:red;">Required</span>                           | none         |
-| `org-id`     | The MongoDB Atlas Organization to use in your workflow. <span style="color:green;">Optional</span>| none         |
-| `project-id` | The MongoDB Atlas Project to use in your workflow. <span style="color:green;">Optional</span>     | none         |
+| Option       | Usage                                                               | Default value |
+|--------------|---------------------------------------------------------------------|--------------|
+| `version`    | Define the Atlas CLI version to use in the workflow. **Optional**   |`v1.5.1`      |
+| `public-key` | The MongoDB Atlas Public Key. **Required**                          | none         |
+| `private-key`| The MongoDB Atlas Private Key. **Required**                         | none         |
+| `org-id`     | The MongoDB Atlas Organization to use in your workflow. **Optional**| none         |
+| `project-id` | The MongoDB Atlas Project to use in your workflow. **Optional**     | none         |
 
 ## License
 The scripts and documentation in this project are released under the [Apache License](LICENSE).
