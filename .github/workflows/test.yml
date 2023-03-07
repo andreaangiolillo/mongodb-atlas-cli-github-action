@@ -1,5 +1,5 @@
 ---
-name: Test AtlasCLI Action on a GitHub Action
+name: Test AtlasCLI Action
 on:
   push:
     branches:
