@@ -1,5 +1,5 @@
 ---
-name: Test AtlasCLI Action on ubuntu-latest
+name: Test AtlasCLI Action on a GitHub Action
 on:
   push:
     branches:
