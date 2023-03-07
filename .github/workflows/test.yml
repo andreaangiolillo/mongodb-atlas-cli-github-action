@@ -13,7 +13,6 @@ jobs:
      matrix:
       os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
-    environment: TEST_ENV
     steps:
       - name: AtlasCLI
         uses: andreaangiolillo/atlas-cli-github-action@main
@@ -30,7 +29,6 @@ jobs:
      matrix:
       os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
-    environment: TEST_ENV
     steps:
       - name: AtlasCLI
         uses: andreaangiolillo/atlas-cli-github-action@main
