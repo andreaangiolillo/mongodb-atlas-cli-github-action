@@ -74,19 +74,12 @@ jobs:
     steps:
       - name: Atlas CLI quickstart
         id: atlas-cli
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@quickstart
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: ${{ vars.ORG_ID }}
          quickstart: true
-      - name: Delete an Atlas project
-        uses: andreaangiolillo/atlas-cli-github-action@main
-        with:
-         public-key: ${{ secrets.PUBLIC_KEY }}
-         private-key: ${{ secrets.PRIVATE_KEY }}
-         org-id: ${{ vars.ORG_ID }}
-         delete-project-id: ${{ steps.atlas-cli.outputs.create-project-id }}
       - name: Use AtlasCLI
         shell: bash
         run: |
