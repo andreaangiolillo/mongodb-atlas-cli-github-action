@@ -49,13 +49,9 @@ jobs:
       os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Install Go
-        uses: actions/setup-go@v3
-        with:
-         go-version: 1.19
       - name: AtlasCLI
         id: atlas-cli
-        uses: andreaangiolillo/atlas-cli-github-action@add_if
+        uses: andreaangiolillo/atlas-cli-github-action@main
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -64,9 +60,3 @@ jobs:
       - name: Delete Project
         shell: bash
         run: atlas project delete ${{ steps.atlas-cli.outputs.create-project-id }} --force
-      - name: Atlas CLI 2
-        id: atlas-cli-2
-        uses: andreaangiolillo/atlas-cli-github-action@add_if
-        with:
-         public-key: ${{ secrets.PUBLIC_KEY }}
-         private-key: ${{ secrets.PRIVATE_KEY }}
