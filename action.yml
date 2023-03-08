@@ -118,7 +118,7 @@ runs:
         projectId=$(atlas project create "${{ github.run_id }}" -o json-path="$.id")
         echo "create-project-id=$(echo $projectId)" >> $GITHUB_OUTPUT
         
-        atlas quickstart --clusterName "${{ github.run_id }}" --projectId $projectId --accessListIp "0.0.0.0/0" --username "${{ github.run_id }}" --password "${{ github.run_id }}" --force
+        atlas quickstart --clusterName "${{ github.run_id }}" --projectId $projectId --accessListIp "0.0.0.0/0" --username "${{ github.run_id }}" --password "${{ github.run_id }}" --skipMongosh --skipSampleData --force
         atlas watch "${{ github.run_id }}" --projectId $projectId
         
         connectionString=$(atlas cluster connectionstrings describe "${{ github.run_id }}" --projectId $projectId -o json-path="$.standardSrv")
