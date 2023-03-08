@@ -27,7 +27,7 @@ inputs:
     description: 'MongoDB Atlas Project Id of the project that will deleted by Atlas CLI. This configuration requires org-id.'
     required: false
   delete-cluster-name:
-    description: 'MongoDB Atlas Cluster Name of the cluster that will deleted by Atlas CLI. This configuration requires project-id.'
+    description: 'MongoDB Atlas Cluster Name of the cluster that will deleted by Atlas CLI. This configuration requires delete-project-id.'
     required: false
   quickstart:
     description: 'Quickstart creates a new Atlas Project, a Free M0 Cluster, a DB user and 0.0.0.0/0 to the Access List so that you have all you need for your workflow. This configuration requires org-id.'
@@ -116,11 +116,11 @@ runs:
         echo "create-project-id=$(echo $projectId)" >> $GITHUB_OUTPUT
 
     - name: Delete Cluster
-      if: ${{ inputs.delete-cluster-name && inputs.project-id }}
+      if: ${{ inputs.delete-cluster-name && inputs.delete-project-id }}
       shell: bash
       run: |
-       atlas cluster delete ${{ inputs.delete-cluster-name }} --force --projectId ${{ inputs.project-id }}
-       if ! atlas cluster watch ${{ inputs.delete-cluster-name }} --projectId ${{ inputs.project-id }} >/dev/null 2>&1; then
+       atlas cluster delete ${{ inputs.delete-cluster-name }} --force --projectId ${{ inputs.delete-project-id }}
+       if ! atlas cluster watch ${{ inputs.delete-cluster-name }} --projectId ${{ inputs.delete-project-id }} >/dev/null 2>&1; then
         echo "Atlas Cluster '${{ inputs.delete-cluster-name }}' is deleted"
         exit 0
        fi

@@ -80,7 +80,7 @@ jobs:
          private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: ${{ vars.ORG_ID }}
          quickstart: true
-      - name: Use AtlasCLI
+      - name: Retrieve the Quickstart info
         shell: bash
         run: |
           echo "${{ steps.atlas-cli.outputs.quickstart-connection-string }}"
