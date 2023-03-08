@@ -1,4 +1,4 @@
-# Atlas CLI GitHub Action (not-official)
+# Atlas CLI GitHub Action (unofficial)
 
 With Atlas CLI GitHub Action, you can automate your workflow by executing Atlas CLI commands to manage Atlas resources inside of an Action.
 
