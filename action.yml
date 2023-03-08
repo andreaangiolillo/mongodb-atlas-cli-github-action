@@ -23,10 +23,25 @@ inputs:
   delete-project-id:
     description: 'MongoDB Atlas Project Id of the project that will deleted by Atlas CLI.'
     required: false
+  quickstart:
+    description: 'Quickstart creates a new Atlas Project, a Free M0 Cluster, a DB user and 0.0.0.0/0 to the Access List so that you have all you need for your workflow.'
+    required: false
 outputs:
   create-project-id:
     description: "ProjectId of the create Atlas Project"
     value: ${{ steps.create_project.outputs.create-project-id }}
+  quickstart-cluster-name:
+      description: "ProjectId of the create Atlas Project"
+      value: ${{ steps.quickstart.outputs.quickstart-cluster-name }}
+  quickstart-db-username:
+      description: "ProjectId of the create Atlas Project"
+      value: ${{ steps.quickstart.outputs.quickstart-db-username }}
+  quickstart-db-username-password:
+      description: "ProjectId of the create Atlas Project"
+      value: ${{ steps.quickstart.outputs.quickstart-db-username-password }}
+  quickstart-connection-string:
+      description: "ProjectId of the create Atlas Project"
+      value: ${{ steps.quickstart.outputs.quickstart-connection-string }}
 runs:
   using: "composite"
   steps:
@@ -94,3 +109,24 @@ runs:
       if: ${{ inputs.delete-project-id }}
       shell: bash
       run: atlas project delete ${{ inputs.delete-project-id }} --force
+
+    - name: Quickstart
+      if: ${{ inputs.quickstart &&  inputs.org-id }}
+      shell: bash
+      id: quickstart
+      run: |
+        projectId=$(atlas project create "${{ github.run_id }}" -o json-path="$.id")
+        echo "create-project-id=$(echo $projectId)" >> $GITHUB_OUTPUT
+        
+        atlas quickstart --clusterName "${{ github.run_id }}" --projectId $projectId --accessListIp "0.0.0.0/0" --username "${{ github.run_id }}" --password "${{ github.run_id }}" --force
+        atlas watch "${{ github.run_id }}" --projectId $projectId
+        
+        connectionString=$(atlas cluster connectionstrings describe "${{ github.run_id }}" --projectId $projectId -o json-path="$.standardSrv")
+        
+        
+        echo "quickstart-cluster-name=$(echo "${{ github.run_id }}")" >> $GITHUB_OUTPUT
+        echo "quickstart-db-username=$(echo "${{ github.run_id }}")" >> $GITHUB_OUTPUT
+        echo "quickstart-db-username-password=$(echo "${{ github.run_id }}")" >> $GITHUB_OUTPUT
+        echo "quickstart-connection-string=$(echo $connectionString)" >> $GITHUB_OUTPUT
+        
+        
