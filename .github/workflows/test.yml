@@ -89,11 +89,11 @@ jobs:
       - name: Cleanup
         shell: bash
         uses: andreaangiolillo/atlas-cli-github-action@quickstart
-         with:
-          public-key: ${{ secrets.PUBLIC_KEY }}
-          private-key: ${{ secrets.PRIVATE_KEY }}
-          org-id: ${{ vars.ORG_ID }}
-          delete-cluster-name: ${{ steps.atlas-cli.outputs.quickstart-cluster-name }}
-          delete-project-id: ${{ steps.atlas-cli.outputs.quickstart-project-id }}
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+         org-id: ${{ vars.ORG_ID }}
+         delete-cluster-name: ${{ steps.atlas-cli.outputs.quickstart-cluster-name }}
+         delete-project-id: ${{ steps.atlas-cli.outputs.quickstart-project-id }}
 
 
