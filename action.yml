@@ -121,13 +121,11 @@ runs:
         echo "Atlas Cluster '${{ inputs.delete-cluster-name }}' is deleted"
         exit 0
        fi
-       
 
     - name: Delete Project
       if: ${{ inputs.delete-project-id &&  inputs.org-id }}
       shell: bash
       run: atlas project delete ${{ inputs.delete-project-id }} --force
-      
 
     - name: Quickstart
       if: ${{ inputs.quickstart &&  inputs.org-id }}
@@ -151,6 +149,3 @@ runs:
         echo "quickstart-db-username=$(echo "${{ github.run_id }}")" >> $GITHUB_OUTPUT
         echo "quickstart-db-username-password=$(echo "${{ github.run_id }}")" >> $GITHUB_OUTPUT
         echo "quickstart-connection-string=$(echo $connectionString)" >> $GITHUB_OUTPUT
-   
-        
-        

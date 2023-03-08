@@ -6,64 +6,64 @@ on:
       - main
   pull_request:
 jobs:
-#  no-version:
-#    name: Testing AtlasCLI action without providing version
-#    strategy:
-#     fail-fast: false
-#     matrix:
-#      os: [ubuntu-latest, macos-latest, windows-latest]
-#    runs-on: ${{ matrix.os }}
-#    steps:
-#      - name: AtlasCLI
-#        uses: andreaangiolillo/atlas-cli-github-action@main
-#        with:
-#         public-key: ${{ secrets.PUBLIC_KEY }}
-#         private-key: ${{ secrets.PRIVATE_KEY }}
-#      - name: Use AtlasCLI
-#        shell: bash
-#        run: atlas --help
-#  with-version:
-#    name: Testing AtlasCLI action
-#    strategy:
-#     fail-fast: false
-#     matrix:
-#      os: [ubuntu-latest, macos-latest, windows-latest]
-#    runs-on: ${{ matrix.os }}
-#    steps:
-#      - name: AtlasCLI
-#        uses: andreaangiolillo/atlas-cli-github-action@main
-#        with:
-#         version: v1.5.0
-#         public-key: ${{ secrets.PUBLIC_KEY }}
-#         private-key: ${{ secrets.PRIVATE_KEY }}
-#         org-id: ${{ vars.ORG_ID }}
-#         project-id: ${{ vars.PROJECT_ID }}
-#      - name: Use AtlasCLI
-#        shell: bash
-#        run: atlas project ls
-#  create-delete-project:
-#    name: Testing AtlasCLI action with project creation and deletion
-#    strategy:
-#     fail-fast: false
-#     matrix:
-#      os: [ubuntu-latest]
-#    runs-on: ${{ matrix.os }}
-#    steps:
-#      - name: Set-up Atlas CLI and create a project
-#        id: atlas-cli
-#        uses: andreaangiolillo/atlas-cli-github-action@main
-#        with:
-#         public-key: ${{ secrets.PUBLIC_KEY }}
-#         private-key: ${{ secrets.PRIVATE_KEY }}
-#         org-id: ${{ vars.ORG_ID }}
-#         create-project-name: ${{github.run_id}}
-#      - name: Delete an Atlas project
-#        uses: andreaangiolillo/atlas-cli-github-action@main
-#        with:
-#         public-key: ${{ secrets.PUBLIC_KEY }}
-#         private-key: ${{ secrets.PRIVATE_KEY }}
-#         org-id: ${{ vars.ORG_ID }}
-#         delete-project-id: ${{ steps.atlas-cli.outputs.create-project-id }}
+  no-version:
+    name: Testing AtlasCLI action without providing version
+    strategy:
+     fail-fast: false
+     matrix:
+      os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: AtlasCLI
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+      - name: Use AtlasCLI
+        shell: bash
+        run: atlas --help
+  with-version:
+    name: Testing AtlasCLI action
+    strategy:
+     fail-fast: false
+     matrix:
+      os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: AtlasCLI
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         version: v1.5.0
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+         org-id: ${{ vars.ORG_ID }}
+         project-id: ${{ vars.PROJECT_ID }}
+      - name: Use AtlasCLI
+        shell: bash
+        run: atlas project ls
+  create-delete-project:
+    name: Testing AtlasCLI action with project creation and deletion
+    strategy:
+     fail-fast: false
+     matrix:
+      os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Set-up Atlas CLI and create a project
+        id: atlas-cli
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+         org-id: ${{ vars.ORG_ID }}
+         create-project-name: ${{github.run_id}}
+      - name: Delete an Atlas project
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+         org-id: ${{ vars.ORG_ID }}
+         delete-project-id: ${{ steps.atlas-cli.outputs.create-project-id }}
   quickstart:
     name: Testing AtlasCLI Quickstart
     strategy:
@@ -74,7 +74,7 @@ jobs:
     steps:
       - name: Atlas CLI Quickstart
         id: atlas-cli
-        uses: andreaangiolillo/atlas-cli-github-action@quickstart
+        uses: andreaangiolillo/atlas-cli-github-action@main
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -87,7 +87,7 @@ jobs:
           echo "${{ steps.atlas-cli.outputs.quickstart-db-username }}"
           echo "${{ steps.atlas-cli.outputs.quickstart-db-username-password }}"
       - name: Atlas CLI Cleanup
-        uses: andreaangiolillo/atlas-cli-github-action@quickstart
+        uses: andreaangiolillo/atlas-cli-github-action@main
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
