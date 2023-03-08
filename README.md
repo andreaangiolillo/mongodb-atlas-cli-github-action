@@ -58,8 +58,8 @@ jobs:
          version: v1.5.0 # optional
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
-         org-id: ${{ env.ORG_ID }} # optional
-         project-id: ${{ env.PROJECT_ID }} # optional
+         org-id: ${{ vars.ORG_ID }} # optional
+         project-id: ${{ vars.PROJECT_ID }} # optional
          
       - name: Use AtlasCLI
         shell: bash
