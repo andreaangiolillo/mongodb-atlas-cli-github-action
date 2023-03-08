@@ -65,6 +65,7 @@ runs:
 
     - name: Create Project
       shell: bash
+      id: create_project
       run: |
         if [ -z "${{ inputs.create-project-name }}" ]; then
          exit 0
