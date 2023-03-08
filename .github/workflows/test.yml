@@ -56,7 +56,7 @@ jobs:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: ${{ vars.ORG_ID }}
-         create-project-name: ${{github.run_id}}
+         create-project-name: "${{github.run_id}}-Create"
       - name: Delete an Atlas project
         uses: andreaangiolillo/atlas-cli-github-action@main
         with:
