@@ -31,7 +31,7 @@ jobs:
     
     steps:
       - name: Configure Atlas CLI
-        uses: andreaangiolillo/atlas-cli-github-action@v1.0.0
+        uses: andreaangiolillo/atlas-cli-github-action@v1.1.0
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -55,7 +55,7 @@ jobs:
     
     steps:
       - name: Configure Atlas CLI
-        uses: andreaangiolillo/atlas-cli-github-action@v1.0.0
+        uses: andreaangiolillo/atlas-cli-github-action@v1.1.0
         with:
          version: v1.5.0 # optional
          public-key: ${{ secrets.PUBLIC_KEY }}
@@ -85,7 +85,7 @@ jobs:
     steps:
       - name: Atlas CLI Quickstart
         id: atlas-cli
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@v1.1.0
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -100,7 +100,7 @@ jobs:
           echo "${{ steps.atlas-cli.outputs.quickstart-db-username-password }}" # Retrieve the DBuser password to access the Atlas Cluster
       
       - name: Atlas CLI Cleanup # Delete the Atlas Project and the Atlas Cluster created by Quickstart
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@v1.1.0
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
