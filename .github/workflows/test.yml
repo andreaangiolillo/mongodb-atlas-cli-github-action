@@ -41,15 +41,15 @@ jobs:
       - name: Use AtlasCLI
         shell: bash
         run: atlas project ls
-  create-project:
-    name: Testing AtlasCLI action with project creation
+  create-delete-project:
+    name: Testing AtlasCLI action with project creation and deletion
     strategy:
      fail-fast: false
      matrix:
       os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: AtlasCLI
+      - name: Set-up Atlas CLI and create a project
         id: atlas-cli
         uses: andreaangiolillo/atlas-cli-github-action@main
         with:
@@ -57,6 +57,11 @@ jobs:
          private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: ${{ vars.ORG_ID }}
          create-project-name: ${{github.run_id}}
-      - name: Delete Project
-        shell: bash
-        run: atlas project delete ${{ steps.atlas-cli.outputs.create-project-id }} --force
+      - name: Delete an Atlas project
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+         org-id: ${{ vars.ORG_ID }}
+         delete-project-id: ${{ steps.atlas-cli.outputs.create-project-id }}
+
