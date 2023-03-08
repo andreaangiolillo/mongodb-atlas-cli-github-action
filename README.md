@@ -1,8 +1,8 @@
-# Atlas CLI GitHub Action (unofficial)
+# MongoDB Atlas CLI GitHub Action (unofficial)
 
-With Atlas CLI GitHub Action, you can automate your workflow by executing Atlas CLI commands to manage Atlas resources inside of an Action.
+With MongoDB Atlas CLI GitHub Action, you can automate your workflow by executing [Atlas CLI](https://www.mongodb.com/docs/atlas/cli/stable/) commands to manage Atlas resources inside of your GitHub workflow.
 
-The action executes the Atlas CLI Bash script on a user defined version. If the user does not specify a version, latest CLI version is used. Read more about various Atlas CLI versions [here](https://www.mongodb.com/docs/atlas/cli/stable/atlas-cli-changelog/).
+The action executes the Atlas CLI on a user defined version. If the user does not specify a version, latest CLI version is used. Read more about various Atlas CLI versions [here](https://www.mongodb.com/docs/atlas/cli/stable/atlas-cli-changelog/).
 
 ## Requirements
 1. You need to provide MongoDB Atlas programmatic keys. See [configure API keys](https://www.mongodb.com/docs/atlas/configure-api-access/#std-label-atlas-admin-api-access).
@@ -24,7 +24,7 @@ on: [push]
 name: Atlas CLI Action Sample
 
 jobs:
-  build-and-deploy:
+  use-atlas-cli:
     runs-on: ubuntu-latest
     
     steps:
@@ -39,7 +39,7 @@ jobs:
         run: atlas --version # Print Atlas CLI Version
 
 ```
-### Provide optional configurations
+### Run Atlas CLI with default Organization and Project
 ```yaml
 # File: .github/workflows/workflow.yml
 
@@ -48,7 +48,7 @@ on: [push]
 name: Atlas CLI Action Sample
 
 jobs:
-  build-and-deploy:
+  use-atlas-cli:
     runs-on: ubuntu-latest
     
     steps:
@@ -66,6 +66,49 @@ jobs:
         run: atlas project ls # List projects available in your Atlas organization
 
 ```
+
+### Create a new Atlas Project, a new Free Cluster, a new DBUser to use in your GitHub workflow
+
+```yaml
+# File: .github/workflows/workflow.yml
+
+on: [push]
+
+name: Atlas CLI Action Sample
+
+jobs:
+  atlas-cli-quickstart:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Atlas CLI Quickstart
+        id: atlas-cli
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+         org-id: ${{ vars.ORG_ID }} # Required with Quickstart
+         quickstart: true # Run Quickstart
+      
+      - name: Retrieve the Cluster info
+        shell: bash
+        run: |
+          echo "${{ steps.atlas-cli.outputs.quickstart-connection-string }}" # Retrieve the connection string of the Atlas Cluster
+          echo "${{ steps.atlas-cli.outputs.quickstart-db-username }}" # Retrieve the DBuser to access the Atlas Cluster
+          echo "${{ steps.atlas-cli.outputs.quickstart-db-username-password }}" # Retrieve the DBuser password to access the Atlas Cluster
+      
+      - name: Atlas CLI Cleanup # Delete the Atlas Project and the Atlas Cluster created by Quickstart
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+         org-id: ${{ vars.ORG_ID }}
+         delete-cluster-name: ${{ steps.atlas-cli.outputs.quickstart-cluster-name }} # Cluster Name to delete. Here we are using the output from Quickstart
+         delete-project-id: ${{ steps.atlas-cli.outputs.quickstart-project-id }} # Project to delete. Here we are using the output from Quickstart
+
+```
+
+
 
 Other examples available in [workflow/test.yml](.github/workflows/test.yml). 
 ## Configuration options
