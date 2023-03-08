@@ -51,10 +51,12 @@ runs:
         ref: atlascli/${{ inputs.version }}
 
     - name: Build AtlasCLI
+      if:  steps.check_path.outputs.atlas-installed == 0
       shell: bash
       run: make build-atlascli
 
     - name: Add Atlas CLI to $PATH
+      if:  steps.check_path.outputs.atlas-installed == 0
       shell: bash
       run: |
         chmod +x bin/atlas
