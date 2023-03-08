@@ -1,6 +1,6 @@
 # Atlas CLI GitHub Action (not-official)
 
-With Atlas CLI GitHub Action, you can automate your workflow by executing Atlas CLI commands to manage Azure resources inside of an Action.
+With Atlas CLI GitHub Action, you can automate your workflow by executing Atlas CLI commands to manage Atlas resources inside of an Action.
 
 The action executes the Atlas CLI Bash script on a user defined version. If the user does not specify a version, latest CLI version is used. Read more about various Atlas CLI versions [here](https://www.mongodb.com/docs/atlas/cli/stable/atlas-cli-changelog/).
 
