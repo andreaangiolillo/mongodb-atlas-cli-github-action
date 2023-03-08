@@ -1,6 +1,8 @@
 name: 'Atlas CLI GitHub Action (unofficial)'
 description: 'Use AtlasCLI in your GitHub workflow'
-color: green
+branding:
+  icon: 'award'
+  color: 'green'
 inputs:
   version:
     description: 'AtlasCLI version to use in your workflow.'
