@@ -116,6 +116,7 @@ runs:
       if: ${{ inputs.delete-cluster-name && inputs.project-id }}
       shell: bash
       run: |
+       atlas cluster delete ${{ inputs.delete-cluster-name }} --projectId ${{ inputs.project-id }}
        atlas cluster watch ${{ inputs.delete-cluster-name }} --projectId ${{ inputs.project-id }} >/dev/null 2>&1
        echo "Atlas Cluster '${{ inputs.delete-cluster-name }}' is deleted"
 
