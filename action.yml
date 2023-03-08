@@ -9,7 +9,7 @@ inputs:
     description: 'MongoDB Atlas PublicKey.'
     required: true
   private-key:
-    description: 'MongoDB Atlas PrivateKey,'
+    description: 'MongoDB Atlas PrivateKey.'
     required: true
   org-id:
     description: 'MongoDB Atlas Organization ID that will be used by Atlas CLI as default when running commands in the workflow.'
@@ -18,7 +18,7 @@ inputs:
     description: 'MongoDB Atlas Project ID that will be used by Atlas CLI as default when running commands in the workflow.'
     required: false
   create-project-name:
-    description: 'MongoDB Atlas Project name os the project that will created by Atlas CLI'
+    description: 'MongoDB Atlas Project name os the project that will created by Atlas CLI.'
     required: false
 outputs:
   create-project-id:
@@ -59,12 +59,11 @@ runs:
          atlas config set project_id ${{ inputs.project-id }}
         fi
 
-        atlas config set public_api_key ${{ inputs.public-key }}j
+        atlas config set public_api_key ${{ inputs.public-key }}
         atlas config set private_api_key ${{ inputs.private-key }}
         atlas config set service "cloud"
 
     - name: Create Project
-      id: create_project
       shell: bash
       run: |
         if [ -z "${{ inputs.create-project-name }}" ]; then
