@@ -31,16 +31,16 @@ runs:
   using: "composite"
   steps:
 
-  - name: Check Atlas CLI is in the $PATH
-    id: check_path
-    shell: bash
-    run: |
-      if ! which atlas >/dev/null 2>&1; then
-        # execute the following step only if the binary is not in PATH
-        echo "atlas-installed=0" >> $GITHUB_OUTPUT
-        exit 0
-      fi
-      echo "atlas-installed=1" >> $GITHUB_OUTPUT
+    - name: Check Atlas CLI is in the $PATH
+      id: check_path
+      shell: bash
+      run: |
+        if ! which atlas >/dev/null 2>&1; then
+          # execute the following step only if the binary is not in PATH
+          echo "atlas-installed=0" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+        echo "atlas-installed=1" >> $GITHUB_OUTPUT
 
     - name: Install Go
       if:  steps.check_path.outputs.atlas-installed == 0

@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: AtlasCLI
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@delete_proj
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -31,7 +31,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: AtlasCLI
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@delete_proj
         with:
          version: v1.5.0
          public-key: ${{ secrets.PUBLIC_KEY }}
@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: Set-up Atlas CLI and create a project
         id: atlas-cli
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@delete_proj
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
