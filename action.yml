@@ -118,11 +118,16 @@ runs:
         projectId=$(atlas project create "${{ github.run_id }}" -o json-path="$.id")
         echo "create-project-id=$(echo $projectId)" >> $GITHUB_OUTPUT
         
-        atlas quickstart --clusterName "${{ github.run_id }}" --projectId $projectId --accessListIp "0.0.0.0/0" --username "${{ github.run_id }}" --password "${{ github.run_id }}" --skipMongosh --skipSampleData --force
+        atlas cluster create "${{ github.run_id }}" --tier M0
+        
+        atlas cluster create "${{ github.run_id }}" --tier M0 --provider AWS --region US_EAST_1
         atlas watch "${{ github.run_id }}" --projectId $projectId
         
         connectionString=$(atlas cluster connectionstrings describe "${{ github.run_id }}" --projectId $projectId -o json-path="$.standardSrv")
         
+        atlas dbuser create --username "${{ github.run_id }}" --password "${{ github.run_id }}"
+        
+        atlas accesslist create 0.0.0.0/0 --comment "GitHubAction"
         
         echo "quickstart-cluster-name=$(echo "${{ github.run_id }}")" >> $GITHUB_OUTPUT
         echo "quickstart-db-username=$(echo "${{ github.run_id }}")" >> $GITHUB_OUTPUT
