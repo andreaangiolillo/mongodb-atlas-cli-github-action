@@ -37,7 +37,7 @@ jobs:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: ${{ vars.ORG_ID }}
-         project-id: ${{ vars.$PROJECT_ID }}
+         project-id: ${{ vars.PROJECT_ID }}
       - name: Use AtlasCLI
         shell: bash
         run: atlas project ls
