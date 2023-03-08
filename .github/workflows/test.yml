@@ -36,8 +36,8 @@ jobs:
          version: v1.5.0
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
-         org-id: $ORG_ID
-         project-id: $PROJECT_ID
+         org-id: ${{ vars.ORG_ID }}
+         project-id: ${{ vars.$PROJECT_ID }}
       - name: Use AtlasCLI
         shell: bash
         run: atlas project ls
@@ -55,7 +55,7 @@ jobs:
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
-         org-id: $ORG_ID
+         org-id: ${{ vars.ORG_ID }}
          create-project-name: ${{github.run_id}}
       - name: Delete Project
         shell: bash
