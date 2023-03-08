@@ -53,7 +53,6 @@ jobs:
         id: atlas-cli
         uses: andreaangiolillo/atlas-cli-github-action@main
         with:
-         version: v1.5.0
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: ${{ env.ORG_ID }}
