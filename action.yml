@@ -89,6 +89,6 @@ runs:
         echo "create-project-id=$(echo $projectId)" >> $GITHUB_OUTPUT
 
     - name: Delete Project
-          if: ${{ inputs.delete-project-id }}
-          shell: bash
-          run: atlas project delete ${{ inputs.delete-project-id }} --force
+      if: ${{ inputs.delete-project-id }}
+      shell: bash
+      run: atlas project delete ${{ inputs.delete-project-id }} --force
