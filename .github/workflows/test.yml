@@ -83,6 +83,8 @@ jobs:
       - name: Use AtlasCLI
         shell: bash
         run: |
-          echo "${{ steps.atlas-cli.outputs.connection-string }}"
+          echo "${{ steps.atlas-cli.outputs.quickstart-connection-string }}"
+          echo "${{ steps.atlas-cli.outputs.quickstart-db-username }}"
+          echo "${{ steps.atlas-cli.outputs.quickstart-db-username-password }}"
 
 
