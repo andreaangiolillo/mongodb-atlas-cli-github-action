@@ -105,7 +105,7 @@ runs:
         atlas config set service "cloud"
 
     - name: Create Project
-      if: ${{ inputs.create-project-name }}
+      if: ${{ inputs.create-project-name &&  inputs.org-id }}
       shell: bash
       id: create_project
       run: |        
@@ -116,11 +116,11 @@ runs:
       if: ${{ inputs.delete-cluster-name && inputs.project-id }}
       shell: bash
       run: |
-       atlas cluster watch ${{ inputs.delete-cluster-name }} --projectId $projectId >/dev/null 2>&1
+       atlas cluster watch ${{ inputs.delete-cluster-name }} --projectId ${{ inputs.project-id }} >/dev/null 2>&1
        echo "Atlas Cluster '${{ inputs.delete-cluster-name }}' is deleted"
 
     - name: Delete Project
-      if: ${{ inputs.delete-project-id }}
+      if: ${{ inputs.delete-project-id &&  inputs.org-id }}
       shell: bash
       run: atlas project delete ${{ inputs.delete-project-id }} --force
       
