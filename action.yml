@@ -32,17 +32,31 @@ runs:
       with:
        go-version: 1.19
 
+    - name: Check Atlas CLI in the $PATH
+      id: check_path
+      shell: bash
+      run: |
+        if ! which atlas >/dev/null 2>&1; then
+          # execute the following step only if the binary is not in PATH
+          echo "atlas-installed=0" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+        echo "atlas-installed=1" >> $GITHUB_OUTPUT
+
     - name: Checkout repository
+      if:  steps.check_path.outputs.atlas-installed == 0
       uses: actions/checkout@v3
       with: 
         repository: mongodb/mongodb-atlas-cli
         ref: atlascli/${{ inputs.version }}
 
     - name: Build AtlasCLI
+      if:  steps.check_path.outputs.atlas-installed == 0
       shell: bash
       run: make build-atlascli
 
     - name: Add Atlas CLI to $PATH
+      if:  steps.check_path.outputs.atlas-installed == 0
       shell: bash
       run: |
         chmod +x bin/atlas
