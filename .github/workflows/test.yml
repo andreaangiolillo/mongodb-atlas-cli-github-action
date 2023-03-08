@@ -55,7 +55,7 @@ jobs:
          go-version: 1.19
       - name: AtlasCLI
         id: atlas-cli
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@add_if
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -64,3 +64,9 @@ jobs:
       - name: Delete Project
         shell: bash
         run: atlas project delete ${{ steps.atlas-cli.outputs.create-project-id }} --force
+      - name: AtlasCLI
+        id: atlas-cli
+        uses: andreaangiolillo/atlas-cli-github-action@add_if
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
