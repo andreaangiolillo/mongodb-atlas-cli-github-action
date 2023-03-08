@@ -137,8 +137,9 @@ Other examples available in [workflow/test.yml](.github/workflows/test.yml).
 | `quickstart-project-id`           | `quickstart`                                            | This property contains the project ID of the project created by `quickstart`.                                                             |
 
 
-## License
-The scripts and documentation in this project are released under the [Apache License](LICENSE).
-
 ## Feature Requests / Questions / Issues
 Please, file a query directly on the [GitHub repository](https://github.com/andreaangiolillo/atlas-cli-github-action/issues) if you encounter an issue related to this action or if you have questions or feature requests.
+
+
+## License
+The scripts and documentation in this project are released under the [Apache License](LICENSE).
