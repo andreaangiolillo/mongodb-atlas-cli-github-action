@@ -67,7 +67,7 @@ jobs:
 
 ```
 
-### Create a new Atlas Project, a new Free Cluster, a new DBUser to use in your GitHub workflow
+### Quickstart - Create a new Atlas Project, a new Free Cluster, a new DBUser to use in your GitHub workflow
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -113,13 +113,29 @@ jobs:
 Other examples available in [workflow/test.yml](.github/workflows/test.yml). 
 ## Configuration options
 
-| Option       | Usage                                                               | Default value |
-|--------------|---------------------------------------------------------------------|--------------|
-| `version`    | Define the Atlas CLI version to use in the workflow. **Optional**   |`v1.5.1`      |
-| `public-key` | The MongoDB Atlas Public Key. **Required**                          | none         |
-| `private-key`| The MongoDB Atlas Private Key. **Required**                         | none         |
-| `org-id`     | The MongoDB Atlas Organization to use in your workflow. **Optional**| none         |
-| `project-id` | The MongoDB Atlas Project to use in your workflow. **Optional**     | none         |
+| Option                | Usage                                                                                                                                                                                                                                                                                                 | Default value |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| `version`             | Define the Atlas CLI version to use in the workflow. **Optional**                                                                                                                                                                                                                                     | `v1.5.1`      |
+| `public-key`          | The MongoDB Atlas Public Key. **Required**                                                                                                                                                                                                                                                            | none          |
+| `private-key`         | The MongoDB Atlas Private Key. **Required**                                                                                                                                                                                                                                                           | none          |
+| `org-id`              | The MongoDB Atlas Organization to use in your workflow. **Optional**                                                                                                                                                                                                                                  | none          |
+| `project-id`          | The MongoDB Atlas Project to use in your workflow. **Optional**                                                                                                                                                                                                                                       | none          |
+| `quickstart`          | Quickstart creates a new Atlas Project, a new Free Atlas Cluster, a new DB user to access the cluster<br> and open the Atlas Cluster to the public internet. All the information needed to use these resources are provided in the outputs. <br> This configuration requires `org-id`.   **Optional** | false         |
+| `create-project-name` | The MongoDB Atlas Cluster to create. The projectId is provided in the outputs. This configuration requires `org-id`. **Optional**                                                                                                                                                                     | none          |
+| `delete-project-id`   | The MongoDB Atlas Project to delete. This configuration requires `org-id`. **Optional**                                                                                                                                                                                                               | none          |
+| `delete-cluster-name` | The MongoDB Atlas Cluster to delete. This configuration requires `delete-project-id`. **Optional**                                                                                                                                                                                                    | none          |
+
+## Outputs Properties
+
+| Outputs                           | Input Configuration Option to provide to get the output | Usage                                                                                                                                     |
+|-----------------------------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| `create-project-id`               | `create-project-name`                                   | This property contains the project Id of the project created by `create-project-id`,                                                      |
+| `quickstart-cluster-name`         | `quickstart`                                            | This property contains the cluster name created by `quickstart`.                                                                          |
+| `quickstart-db-username`          | `quickstart`                                            | This property contains the dbuser username to use to access the cluster created by `quickstart`.                                          |
+| `quickstart-db-username-password` | `quickstart`                                            | This property contains the dbuser password to use to access the cluster created by `quickstart`.                                          |
+| `quickstart-connection-string`    | `quickstart`                                            | This property contains the connection string of the cluster created by `quickstart`  that can be used to connect to the MongoDB database. |
+| `quickstart-project-id`           | `quickstart`                                            | This property contains the project ID of the project created by `quickstart`.                                                             |
+
 
 ## License
 The scripts and documentation in this project are released under the [Apache License](LICENSE).

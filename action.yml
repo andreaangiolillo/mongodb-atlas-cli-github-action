@@ -21,7 +21,7 @@ inputs:
     description: 'MongoDB Atlas Project ID that will be used by Atlas CLI as default when running commands in the workflow.'
     required: false
   create-project-name:
-    description: 'MongoDB Atlas Project name of the project that will created by Atlas CLI.'
+    description: 'MongoDB Atlas Project name of the project that will created by Atlas CLI. This configuration requires org-id.'
     required: false
   delete-project-id:
     description: 'MongoDB Atlas Project Id of the project that will deleted by Atlas CLI. This configuration requires org-id.'
