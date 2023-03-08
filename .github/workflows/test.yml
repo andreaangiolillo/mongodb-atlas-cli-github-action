@@ -63,7 +63,7 @@ jobs:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: ${{ vars.ORG_ID }}
-         delete-project-id: ${{github.run_id}}
+         delete-project-id: ${{ steps.atlas-cli.outputs.create-project-id }}
 #      - name: Delete Project
 #        shell: bash
 #        run: atlas project delete ${{ steps.atlas-cli.outputs.create-project-id }} --force
