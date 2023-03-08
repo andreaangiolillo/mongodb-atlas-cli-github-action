@@ -92,6 +92,7 @@ jobs:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: ${{ vars.ORG_ID }}
+         project-id: ${{ steps.atlas-cli.outputs.quickstart-project-id }}
          delete-cluster-name: ${{ steps.atlas-cli.outputs.quickstart-cluster-name }}
          delete-project-id: ${{ steps.atlas-cli.outputs.quickstart-project-id }}
 
