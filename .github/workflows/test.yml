@@ -6,41 +6,41 @@ on:
       - main
   pull_request:
 jobs:
-#  no-version:
-#    name: Testing AtlasCLI action without providing version
-#    strategy:
-#     fail-fast: false
-#     matrix:
-#      os: [ubuntu-latest, macos-latest, windows-latest]
-#    runs-on: ${{ matrix.os }}
-#    steps:
-#      - name: AtlasCLI
-#        uses: andreaangiolillo/atlas-cli-github-action@main
-#        with:
-#         public-key: ${{ secrets.PUBLIC_KEY }}
-#         private-key: ${{ secrets.PRIVATE_KEY }}
-#      - name: Use AtlasCLI
-#        shell: bash
-#        run: atlas --help
-#  with-version:
-#    name: Testing AtlasCLI action
-#    strategy:
-#     fail-fast: false
-#     matrix:
-#      os: [ubuntu-latest, macos-latest, windows-latest]
-#    runs-on: ${{ matrix.os }}
-#    steps:
-#      - name: AtlasCLI
-#        uses: andreaangiolillo/atlas-cli-github-action@main
-#        with:
-#         version: v1.5.0
-#         public-key: ${{ secrets.PUBLIC_KEY }}
-#         private-key: ${{ secrets.PRIVATE_KEY }}
-#         org-id: ${{ vars.ORG_ID }}
-#         project-id: ${{ vars.PROJECT_ID }}
-#      - name: Use AtlasCLI
-#        shell: bash
-#        run: atlas project ls
+  no-version:
+    name: Testing AtlasCLI action without providing version
+    strategy:
+     fail-fast: false
+     matrix:
+      os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: AtlasCLI
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+      - name: Use AtlasCLI
+        shell: bash
+        run: atlas --help
+  with-version:
+    name: Testing AtlasCLI action
+    strategy:
+     fail-fast: false
+     matrix:
+      os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: AtlasCLI
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         version: v1.5.0
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+         org-id: ${{ vars.ORG_ID }}
+         project-id: ${{ vars.PROJECT_ID }}
+      - name: Use AtlasCLI
+        shell: bash
+        run: atlas project ls
   create-project:
     name: Testing AtlasCLI action with project creation
     strategy:
