@@ -9,7 +9,7 @@ The action executes the Atlas CLI Bash script on a user defined version. If the 
 2. You need to add your MongoDB Atlas programmatic keys as [Encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to your GitHub Repository.
 
 ## Limitations
-1. Atlas CLI GitHub Action works only with `ubuntu-latest` and `macos-latest`.
+1. Atlas CLI GitHub Action has been tested only with `ubuntu-latest`, `macos-latest`, `windows-latest`.
 2. Atlas CLI GitHub Action does not support `atlas auth login`.
 
 

@@ -35,11 +35,11 @@ runs:
       shell: bash
       run: make build-atlascli
 
-    - name: Add AtlasCLI to $PATH
+    - name: Add Atlas CLI to $PATH
       shell: bash
       run: |
         chmod +x bin/atlas
-        echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
+        echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH       
 
     - name: Configure AtlasCLI
       shell: bash
