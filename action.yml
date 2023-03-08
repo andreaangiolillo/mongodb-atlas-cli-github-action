@@ -119,7 +119,7 @@ runs:
         echo "create-project-id=$(echo $projectId)" >> $GITHUB_OUTPUT
         
         atlas cluster create "${{ github.run_id }}" --tier M0 --provider AWS --region US_EAST_1 --projectId $projectId 
-        atlas watch "${{ github.run_id }}" --projectId $projectId
+        atlas cluster watch "${{ github.run_id }}" --projectId $projectId
         
         connectionString=$(atlas cluster connectionstrings describe "${{ github.run_id }}" --projectId $projectId -o json-path="$.standardSrv")
         
