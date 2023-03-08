@@ -32,19 +32,8 @@ runs:
       with:
        go-version: 1.19
 
-    - name: Check Atlas CLI in the $PATH
-      id: check_path
-      shell: bash
-      run: |
-       if atlas --version ; then
-        exit 0
-       fi
-       
-       exit 1
-        
-
     - name: Checkout repository
-      if: ${{ failure() && steps.check_path.conclusion == 'failure' }}
+      if:  ${{ ! atlas --version }}
       uses: actions/checkout@v3
       with: 
         repository: mongodb/mongodb-atlas-cli
