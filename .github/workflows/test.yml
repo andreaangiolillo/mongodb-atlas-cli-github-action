@@ -64,4 +64,36 @@ jobs:
          private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: ${{ vars.ORG_ID }}
          delete-project-id: ${{ steps.atlas-cli.outputs.create-project-id }}
+  quickstart:
+    name: Testing AtlasCLI Quickstart
+    strategy:
+     fail-fast: false
+     matrix:
+      os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Atlas CLI Quickstart
+        id: atlas-cli
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+         org-id: ${{ vars.ORG_ID }}
+         quickstart: true
+      - name: Use AtlasCLI
+        shell: bash
+        run: |
+          echo "${{ steps.atlas-cli.outputs.quickstart-connection-string }}"
+          echo "${{ steps.atlas-cli.outputs.quickstart-db-username }}"
+          echo "${{ steps.atlas-cli.outputs.quickstart-db-username-password }}"
+      - name: Atlas CLI Cleanup
+        uses: andreaangiolillo/atlas-cli-github-action@main
+        with:
+         public-key: ${{ secrets.PUBLIC_KEY }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
+         org-id: ${{ vars.ORG_ID }}
+         project-id: ${{ steps.atlas-cli.outputs.quickstart-project-id }}
+         delete-cluster-name: ${{ steps.atlas-cli.outputs.quickstart-cluster-name }}
+         delete-project-id: ${{ steps.atlas-cli.outputs.quickstart-project-id }}
+
 
