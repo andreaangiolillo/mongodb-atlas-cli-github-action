@@ -29,7 +29,7 @@ jobs:
     
     steps:
       - name: Configure Atlas CLI
-        uses: andreaangiolillo/atlas-cli-github-action@latest
+        uses: andreaangiolillo/atlas-cli-github-action@v1.0.0
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -53,7 +53,7 @@ jobs:
     
     steps:
       - name: Configure Atlas CLI
-        uses: andreaangiolillo/atlas-cli-github-action@latest
+        uses: andreaangiolillo/atlas-cli-github-action@v1.0.0
         with:
          version: v1.5.0 # optional
          public-key: ${{ secrets.PUBLIC_KEY }}
