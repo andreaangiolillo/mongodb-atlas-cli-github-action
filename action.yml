@@ -30,7 +30,7 @@ inputs:
     description: 'MongoDB Atlas Cluster Name of the cluster that will deleted by Atlas CLI. This configuration requires delete-project-id.'
     required: false
   quickstart:
-    description: 'Quickstart creates a new Atlas Project, a Free M0 Cluster, a DB user and 0.0.0.0/0 to the Access List so that you have all you need for your workflow. This configuration requires org-id.'
+    description: 'Quickstart simplifies the process of creating a new testing environment by automating the setup of a Atlas Project, a Free Atlas Cluster and a new DB user for accessing the cluster. Additionally, the tool allows you to quickly open the Atlas Cluster to the public internet for easy access. After the process is completed, you will have access to all the necessary information to use these resources in your subsequent steps in the outputs. This configuration requires org-id.'
     required: false
 outputs:
   create-project-id:
