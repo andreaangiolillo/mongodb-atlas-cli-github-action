@@ -91,7 +91,7 @@ runs:
       run: |
         chmod +x bin/atlas
         sudo mkdir -p $HOME/.local/bin
-        mv bin/atlas $HOME/.local/bin
+        sudo mv bin/atlas $HOME/.local/bin
         echo "$HOME/.local/bin" >> $GITHUB_PATH       
 
     - name: Configure AtlasCLI
