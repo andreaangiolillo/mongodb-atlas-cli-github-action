@@ -93,7 +93,7 @@ runs:
         mkdir -p $HOME/.local/bin
         mv bin/atlas $HOME/.local/bin
         echo "$HOME/.local/bin" >> $GITHUB_PATH
-        ls -al
+        ls -al "$GITHUB_WORKSPACE"
 #        rm -rf "$GITHUB_WORKSPACE"
 
 
