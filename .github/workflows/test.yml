@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: AtlasCLI
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@delete_workspace
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -31,7 +31,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: AtlasCLI
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@delete_workspace
         with:
          version: v1.5.0
          public-key: ${{ secrets.PUBLIC_KEY }}
@@ -51,14 +51,14 @@ jobs:
     steps:
       - name: Set-up Atlas CLI and create a project
         id: atlas-cli
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@delete_workspace
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
          org-id: ${{ vars.ORG_ID }}
          create-project-name: "${{github.run_id}}-Create"
       - name: Delete an Atlas project
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@delete_workspace
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -74,7 +74,7 @@ jobs:
     steps:
       - name: Atlas CLI Quickstart
         id: atlas-cli
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@delete_workspace
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
@@ -87,7 +87,7 @@ jobs:
           echo "${{ steps.atlas-cli.outputs.quickstart-db-username }}"
           echo "${{ steps.atlas-cli.outputs.quickstart-db-username-password }}"
       - name: Atlas CLI Cleanup
-        uses: andreaangiolillo/atlas-cli-github-action@main
+        uses: andreaangiolillo/atlas-cli-github-action@delete_workspace
         with:
          public-key: ${{ secrets.PUBLIC_KEY }}
          private-key: ${{ secrets.PRIVATE_KEY }}
