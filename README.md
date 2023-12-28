@@ -4,7 +4,7 @@
 
 With MongoDB Atlas CLI GitHub Action, you can automate your workflow by executing [Atlas CLI](https://www.mongodb.com/docs/atlas/cli/stable/) commands to manage Atlas resources inside of your GitHub workflow.
 
-The action executes the Atlas CLI on a user defined version. If the user does not specify a version, latest CLI version is used. Read more about various Atlas CLI versions [here](https://www.mongodb.com/docs/atlas/cli/stable/atlas-cli-changelog/).
+The action executes the Atlas CLI on a user-defined version. If the user does not specify a version, latest CLI version is used. Read more about various Atlas CLI versions [here](https://www.mongodb.com/docs/atlas/cli/stable/atlas-cli-changelog/).
 
 ## This is a personal project. MongoDB is not involved and does not provide support for this GitHub Action.
 
