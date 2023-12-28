@@ -1,3 +1,5 @@
+# This repo is deprecated, please use the official action: https://github.com/mongodb/atlas-github-action
+
 # MongoDB Atlas CLI GitHub Action (unofficial)
 
 With MongoDB Atlas CLI GitHub Action, you can automate your workflow by executing [Atlas CLI](https://www.mongodb.com/docs/atlas/cli/stable/) commands to manage Atlas resources inside of your GitHub workflow.
